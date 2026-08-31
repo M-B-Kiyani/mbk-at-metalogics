@@ -32,7 +32,7 @@ export function Section({
     >
       <div className="mx-auto max-w-[84rem] px-5 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32">
         <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-5">
             <p className={cn("label-mono", dark && "text-surface-foreground/55")}>
               {index} — {eyebrow}
             </p>
@@ -41,7 +41,7 @@ export function Section({
             </h2>
           </div>
           {intro ? (
-            <div className="lg:col-span-7 lg:col-start-6">
+            <div className="lg:col-span-6 lg:col-start-7">
               <div
                 className={cn(
                   "max-w-2xl text-[15px] leading-relaxed text-muted-foreground sm:text-base",

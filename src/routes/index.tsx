@@ -10,9 +10,9 @@ import {
   contact,
   foundationPoints,
   identity,
+  metalogicsUrl,
   method,
   nav,
-  PLACEHOLDER,
   reliabilityPrinciples,
 } from "@/content/profile";
 
@@ -279,7 +279,8 @@ function Work() {
       intro={
         <p>
           Engagements are described anonymously by default. Client names and logos appear only where explicitly
-          approved, and no metric is published without documented evidence.
+          approved, and no metric is published without documented evidence. Full engagement briefs — problem,
+          diagnosis, decision and outcome — are shared directly on request.
         </p>
       }
     >

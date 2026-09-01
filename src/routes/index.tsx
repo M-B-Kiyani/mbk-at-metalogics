@@ -402,26 +402,50 @@ function Footer() {
       <div className="mx-auto max-w-[84rem] px-5 py-12 sm:px-8 lg:px-12">
         <div className="grid gap-10 sm:grid-cols-2">
           <div>
-            <p className="font-display text-base font-semibold">{identity.name}</p>
+            <p className="font-display text-base font-semibold text-surface-foreground">{identity.name}</p>
             <p className="mt-1 text-sm text-surface-foreground/70">{identity.title}</p>
             <p className="mt-1 text-sm text-surface-foreground/50">{identity.foundation}</p>
-            <p className="mt-4 label-mono text-surface-foreground/55">{identity.org}</p>
+            <a
+              href="https://metalogics.io/"
+              className="mt-4 inline-block font-display text-sm font-semibold tracking-[0.22em] text-surface-foreground/80 transition-colors hover:text-surface-foreground"
+            >
+              METALOGICS
+            </a>
           </div>
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 sm:justify-end">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-surface-foreground/70 transition-colors hover:text-surface-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <div className="flex flex-col gap-6 sm:items-end">
+            <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 sm:justify-end">
+              {nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-surface-foreground/70 transition-colors hover:text-surface-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <nav aria-label="MetaLogics" className="flex flex-wrap gap-x-8 gap-y-3 sm:justify-end">
+              {[
+                { label: "MetaLogics Home", href: "https://metalogics.io/" },
+                { label: "Our Work", href: "https://metalogics.io/our-work/" },
+                { label: "Book A Call", href: "https://metalogics.io/book-a-call/" },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-surface-foreground/50 transition-colors hover:text-surface-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
         </div>
         <p className="mt-12 border-t border-surface-foreground/12 pt-6 text-xs text-surface-foreground/45">
-          © {new Date().getFullYear()} {identity.name}. Technology and AI work delivered with {identity.org}.
+          © {new Date().getFullYear()} {identity.org}. Personal profile page of {identity.name}, part of the
+          MetaLogics website.
         </p>
+
       </div>
     </footer>
   );

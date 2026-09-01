@@ -82,6 +82,7 @@ function Home() {
 function Hero() {
   return (
     <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-44 lg:pb-32">
+      <div className="brand-wash pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="rule-grid pointer-events-none absolute inset-0 opacity-[0.55] [mask-image:radial-gradient(80%_60%_at_60%_10%,black,transparent)]" />
       <div className="relative mx-auto grid max-w-[84rem] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12">
         <div className="lg:col-span-7">
@@ -93,7 +94,7 @@ function Hero() {
               Bilal Kiyani
             </h1>
             <div className="mt-7 flex items-center gap-4">
-              <span className="h-px w-10 bg-foreground/40" />
+              <span className="h-px w-10 bg-primary/45" />
               <p className="font-display text-lg font-medium sm:text-xl">{identity.title}</p>
             </div>
           </Reveal>
@@ -108,14 +109,14 @@ function Hero() {
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href="#work"
-                className="inline-flex min-h-12 items-center justify-center gap-2 bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-sm font-medium text-primary-foreground transition-colors hover:bg-signal"
               >
                 Explore my work
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
                 href="#metalogics"
-                className="inline-flex min-h-12 items-center justify-center gap-2 border border-foreground/25 px-6 text-sm font-medium transition-colors hover:border-foreground/60"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary/30 px-7 text-sm font-medium text-primary transition-colors hover:border-primary hover:bg-accent/60"
               >
                 Explore MetaLogics
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -228,7 +229,7 @@ function Foundation() {
     >
       <div className="grid gap-10 lg:grid-cols-3 lg:gap-14">
         {foundationPoints.map((point, i) => (
-          <Reveal key={point.from} delay={i * 80} className="border-t border-foreground/70 pt-6">
+          <Reveal key={point.from} delay={i * 80} className="border-t border-primary/60 pt-6">
             <p className="label-mono flex flex-wrap items-center gap-2 text-foreground">
               <span>{point.from}</span>
               <ArrowRight className="h-3 w-3" aria-hidden="true" />
@@ -284,7 +285,7 @@ function Work() {
         </p>
       }
     >
-      <div className="border-t border-foreground/70">
+      <div className="border-t border-primary/60">
         {caseStudies.map((cs, i) => (
           <Reveal key={cs.title} delay={i * 70} className="border-b border-hairline py-10 sm:py-12">
             <div className="grid gap-8 lg:grid-cols-12">
@@ -352,7 +353,7 @@ function MetaLogics() {
                 href={metalogicsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 border border-foreground/70 px-6 text-sm font-medium transition-colors hover:bg-foreground hover:text-background"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary/40 px-7 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
                 Explore {identity.org}
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -401,26 +402,50 @@ function Footer() {
       <div className="mx-auto max-w-[84rem] px-5 py-12 sm:px-8 lg:px-12">
         <div className="grid gap-10 sm:grid-cols-2">
           <div>
-            <p className="font-display text-base font-semibold">{identity.name}</p>
+            <p className="font-display text-base font-semibold text-surface-foreground">{identity.name}</p>
             <p className="mt-1 text-sm text-surface-foreground/70">{identity.title}</p>
             <p className="mt-1 text-sm text-surface-foreground/50">{identity.foundation}</p>
-            <p className="mt-4 label-mono text-surface-foreground/55">{identity.org}</p>
+            <a
+              href="https://metalogics.io/"
+              className="mt-4 inline-block font-display text-sm font-semibold tracking-[0.22em] text-surface-foreground/80 transition-colors hover:text-surface-foreground"
+            >
+              METALOGICS
+            </a>
           </div>
-          <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 sm:justify-end">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-sm text-surface-foreground/70 transition-colors hover:text-surface-foreground"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <div className="flex flex-col gap-6 sm:items-end">
+            <nav aria-label="Footer" className="flex flex-wrap gap-x-8 gap-y-3 sm:justify-end">
+              {nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-surface-foreground/70 transition-colors hover:text-surface-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <nav aria-label="MetaLogics" className="flex flex-wrap gap-x-8 gap-y-3 sm:justify-end">
+              {[
+                { label: "MetaLogics Home", href: "https://metalogics.io/" },
+                { label: "Our Work", href: "https://metalogics.io/our-work/" },
+                { label: "Book A Call", href: "https://metalogics.io/book-a-call/" },
+              ].map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm text-surface-foreground/50 transition-colors hover:text-surface-foreground"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
         </div>
         <p className="mt-12 border-t border-surface-foreground/12 pt-6 text-xs text-surface-foreground/45">
-          © {new Date().getFullYear()} {identity.name}. Technology and AI work delivered with {identity.org}.
+          © {new Date().getFullYear()} {identity.org}. Personal profile page of {identity.name}, part of the
+          MetaLogics website.
         </p>
+
       </div>
     </footer>
   );

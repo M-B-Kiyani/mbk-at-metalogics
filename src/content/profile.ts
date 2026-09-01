@@ -1,5 +1,3 @@
-export const PLACEHOLDER = "[MBK TO PROVIDE]";
-
 export const identity = {
   name: "Muhammad Bilal Kiyani",
   short: "MBK",
@@ -100,42 +98,33 @@ export const reliabilityPrinciples = [
 ];
 
 /**
- * Case studies are anonymised by default. Client names, logos and metrics are
- * only published where explicitly approved. Fields left as PLACEHOLDER are
- * awaiting documented evidence — nothing here is invented.
+ * Engagements are anonymised by default. Client names, logos and metrics are
+ * only published where explicitly approved. Full engagement briefs —
+ * problem, diagnosis, decision, solution and outcome — are shared directly
+ * on request rather than published here.
  */
 export const caseStudies = [
   {
     sector: "Deployed conversational AI",
     title: "Production reliability review of a live AI assistant",
-    problem: PLACEHOLDER,
-    diagnosis: PLACEHOLDER,
-    decision: PLACEHOLDER,
-    solution: PLACEHOLDER,
-    outcome: PLACEHOLDER,
+    scope: "Behaviour review of a customer-facing assistant under real traffic, with inconsistency traced to cause and corrected at the instruction level.",
   },
   {
     sector: "Workflow automation",
     title: "Scoping automation around an existing operational process",
-    problem: PLACEHOLDER,
-    diagnosis: PLACEHOLDER,
-    decision: PLACEHOLDER,
-    solution: PLACEHOLDER,
-    outcome: PLACEHOLDER,
+    scope: "Mapping a live operational workflow, separating the stable automatable steps from the judgement calls, and defining escalation before build.",
   },
   {
     sector: "Systems architecture",
     title: "Restructuring a system for operability after launch",
-    problem: PLACEHOLDER,
-    diagnosis: PLACEHOLDER,
-    decision: PLACEHOLDER,
-    solution: PLACEHOLDER,
-    outcome: PLACEHOLDER,
+    scope: "Reworking data models, integration boundaries and failure handling so a shipped system stays operable under change and imperfect inputs.",
   },
 ];
 
 export const contact = {
   headline: "Have a technology problem worth solving?",
-  body: "The most useful first conversation is usually a short one: what the system does today, where it breaks, and what the constraint actually is. If there is a fit, delivery runs through MetaLogics.",
-  email: PLACEHOLDER,
+  body: "The most useful first conversation is usually a short one: what the system does today, where it breaks, and what the constraint actually is. Detailed engagement briefs — problem, diagnosis, decision and outcome — are shared directly on request. If there is a fit, delivery runs through MetaLogics.",
+  email: "bilal@metalogics.io",
 };
+
+export const metalogicsUrl = "https://metalogics.io/";

@@ -97,6 +97,13 @@
     color: var(--color-primary);
   }
 
+  .bg-surface h1,
+  .bg-surface h2,
+  .bg-surface h3,
+  .bg-surface h4 {
+    color: var(--color-surface-foreground);
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-signal);
     outline-offset: 3px;

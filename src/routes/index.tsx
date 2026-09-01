@@ -381,7 +381,12 @@ function Contact() {
             <p className="text-[15px] leading-relaxed text-surface-foreground/70 sm:text-base">{contact.body}</p>
             <div className="mt-8">
               <p className="label-mono text-surface-foreground/55">Direct contact</p>
-              <p className="mt-2 font-mono text-sm text-surface-foreground/60">{contact.email}</p>
+              <a
+                href={`mailto:${contact.email}`}
+                className="mt-2 inline-block font-mono text-sm text-surface-foreground underline decoration-surface-foreground/30 underline-offset-4 transition-colors hover:decoration-surface-foreground"
+              >
+                {contact.email}
+              </a>
             </div>
           </div>
         </Reveal>

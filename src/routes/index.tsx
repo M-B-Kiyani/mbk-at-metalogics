@@ -79,6 +79,27 @@ function Home() {
   );
 }
 
+// Exported so the embeddable build (src/embed) can render the identical
+// body content under a different, non-fixed header — see src/embed/EmbedApp.tsx.
+// Do not duplicate this JSX elsewhere; extend it here so both targets stay in sync.
+export function ProfileBody() {
+  return (
+    <>
+      <Hero />
+      <About />
+      <Capabilities />
+      <Foundation />
+      <Reliability />
+      <Work />
+      <Approach />
+      <MetaLogics />
+      <Contact />
+    </>
+  );
+}
+
+export { Footer };
+
 function Hero() {
   return (
     <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-44 lg:pb-32">

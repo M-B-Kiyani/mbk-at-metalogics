@@ -1,5 +1,3 @@
-export const PLACEHOLDER = "[MBK TO PROVIDE]";
-
 export const identity = {
   name: "Muhammad Bilal Kiyani",
   short: "MBK",

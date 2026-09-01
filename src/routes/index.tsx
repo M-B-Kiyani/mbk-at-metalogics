@@ -294,30 +294,12 @@ function Work() {
                   {cs.title}
                 </h3>
               </div>
-              <dl className="grid gap-6 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
-                {(
-                  [
-                    ["Problem", cs.problem],
-                    ["Diagnosis", cs.diagnosis],
-                    ["Decision", cs.decision],
-                    ["Solution", cs.solution],
-                    ["Outcome", cs.outcome],
-                  ] as const
-                ).map(([k, v]) => (
-                  <div key={k}>
-                    <dt className="label-mono">{k}</dt>
-                    <dd
-                      className={
-                        v === PLACEHOLDER
-                          ? "mt-2 font-mono text-[13px] text-muted-foreground/70"
-                          : "mt-2 text-[15px] leading-relaxed"
-                      }
-                    >
-                      {v}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="lg:col-span-7 lg:col-start-6">
+                <p className="max-w-xl text-[15px] leading-relaxed text-muted-foreground">{cs.scope}</p>
+                <p className="mt-4 font-mono text-[12px] tracking-wide text-muted-foreground/70 uppercase">
+                  Full brief available on request
+                </p>
+              </div>
             </div>
           </Reveal>
         ))}
@@ -367,15 +349,15 @@ function MetaLogics() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href={PLACEHOLDER}
+                href={metalogicsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex min-h-12 items-center justify-center gap-2 border border-foreground/70 px-6 text-sm font-medium transition-colors hover:bg-foreground hover:text-background"
               >
                 Explore {identity.org}
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
-              <span className="self-center font-mono text-[12px] text-muted-foreground/70">
-                URL {PLACEHOLDER}
-              </span>
+              <span className="self-center font-mono text-[12px] text-muted-foreground/70">metalogics.io</span>
             </div>
           </div>
         </Reveal>

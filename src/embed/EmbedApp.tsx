@@ -1,9 +1,9 @@
-import { ProfileBody, Footer } from "@/routes/index";
+import { ProfileBody, Footer } from "@/routes/MBK";
 import { EmbedHeader } from "./EmbedHeader";
 
 /**
  * Root component for the embeddable build.
- * Same section content as the standalone site (src/routes/index.tsx),
+ * Same section content as the standalone site (src/routes/MBK.tsx),
  * different header — see EmbedHeader.tsx for why.
  */
 export function EmbedApp() {

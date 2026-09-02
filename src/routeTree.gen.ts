@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MBKRouteImport } from './routes/MBK'
 import { Route as HaroonRouteImport } from './routes/haroon'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MBKRoute = MBKRouteImport.update({
+  id: '/MBK',
+  path: '/MBK',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HaroonRoute = HaroonRouteImport.update({
@@ -25,27 +31,31 @@ const HaroonRoute = HaroonRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/MBK': typeof MBKRoute
   '/haroon': typeof HaroonRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/MBK': typeof MBKRoute
   '/haroon': typeof HaroonRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/MBK': typeof MBKRoute
   '/haroon': typeof HaroonRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/haroon'
+  fullPaths: '/' | '/MBK' | '/haroon'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/haroon'
-  id: '__root__' | '/' | '/haroon'
+  to: '/' | '/MBK' | '/haroon'
+  id: '__root__' | '/' | '/MBK' | '/haroon'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MBKRoute: typeof MBKRoute
   HaroonRoute: typeof HaroonRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/MBK': {
+      id: '/MBK'
+      path: '/MBK'
+      fullPath: '/MBK'
+      preLoaderRoute: typeof MBKRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/haroon': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MBKRoute: MBKRoute,
   HaroonRoute: HaroonRoute,
 }
 export const routeTree = rootRouteImport

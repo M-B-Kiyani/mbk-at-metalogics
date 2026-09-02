@@ -8,6 +8,8 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "build:embed": "vite build --config vite.embed.config.ts",
+    "build:embed:haroon": "vite build --config vite.embed.haroon.config.ts",
+    "build:embed:all": "npm run build:embed && npm run build:embed:haroon",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write ."

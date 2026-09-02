@@ -1,6 +1,6 @@
 import { useState, type MouseEvent } from "react";
 import { Menu, X } from "lucide-react";
-import { identity, nav } from "@/content/profile";
+import { identity as mbkIdentity, nav as mbkNav } from "@/content/profile";
 import { cn } from "@/lib/utils";
 
 // Default browser fragment navigation (href="#id") across a shadow boundary
@@ -16,6 +16,12 @@ function scrollToId(e: MouseEvent<HTMLAnchorElement>, id: string) {
   target?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+type EmbedHeaderProps = {
+  shortLabel?: string;
+  title?: string;
+  nav?: { label: string; href: string }[];
+};
+
 /**
  * Header for the embedded build only.
  *
@@ -28,15 +34,25 @@ function scrollToId(e: MouseEvent<HTMLAnchorElement>, id: string) {
  * - No document.body writes (e.g. overflow locking for the mobile menu) —
  *   an embedded widget must never reach outside its own container.
  */
-export function EmbedHeader() {
+export function EmbedHeader({
+  shortLabel = mbkIdentity.short,
+  title = mbkIdentity.title,
+  nav = mbkNav,
+}: EmbedHeaderProps = {}) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="relative z-10 border-b border-hairline bg-background">
       <div className="mx-auto flex h-16 max-w-[84rem] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <a href="#top" onClick={(e) => scrollToId(e, "top")} className="group flex items-baseline gap-2.5">
-          <span className="font-display text-sm font-semibold tracking-[0.18em] text-primary">MBK</span>
-          <span className="hidden text-[11px] text-muted-foreground sm:inline">{identity.title}</span>
+        <a
+          href="#top"
+          onClick={(e) => scrollToId(e, "top")}
+          className="group flex items-baseline gap-2.5"
+        >
+          <span className="font-display text-sm font-semibold tracking-[0.18em] text-primary">
+            {shortLabel}
+          </span>
+          <span className="hidden text-[11px] text-muted-foreground sm:inline">{title}</span>
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
@@ -72,8 +88,14 @@ export function EmbedHeader() {
       </div>
 
       {open && (
-        <div id="mbk-embed-mobile-nav" className={cn("border-t border-hairline bg-background lg:hidden")}>
-          <nav aria-label="Mobile" className="mx-auto flex max-w-[84rem] flex-col px-5 py-2 sm:px-8">
+        <div
+          id="mbk-embed-mobile-nav"
+          className={cn("border-t border-hairline bg-background lg:hidden")}
+        >
+          <nav
+            aria-label="Mobile"
+            className="mx-auto flex max-w-[84rem] flex-col px-5 py-2 sm:px-8"
+          >
             {nav.map((item) => (
               <a
                 key={item.href}

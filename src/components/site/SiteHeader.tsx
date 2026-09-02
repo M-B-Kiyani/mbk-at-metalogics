@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { identity, nav } from "@/content/profile";
+import { identity as mbkIdentity, nav as mbkNav } from "@/content/profile";
 import { cn } from "@/lib/utils";
 
 const ML = "https://metalogics.io";
@@ -12,7 +12,18 @@ const parentNav = [
   { label: "Services", href: `${ML}/services/` },
 ];
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  /** Short mark shown in the logo slot, e.g. "MBK". Defaults to MBK's own header for backwards compatibility. */
+  shortLabel?: string;
+  title?: string;
+  nav?: { label: string; href: string }[];
+};
+
+export function SiteHeader({
+  shortLabel = mbkIdentity.short,
+  title = mbkIdentity.title,
+  nav = mbkNav,
+}: SiteHeaderProps = {}) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,7 +45,9 @@ export function SiteHeader() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        scrolled ? "border-b border-hairline bg-background/90 backdrop-blur-md" : "border-b border-transparent",
+        scrolled
+          ? "border-b border-hairline bg-background/90 backdrop-blur-md"
+          : "border-b border-transparent",
       )}
     >
       {/* Parent-site bar — this page lives inside the MetaLogics website */}
@@ -66,8 +79,10 @@ export function SiteHeader() {
 
       <div className="mx-auto flex h-16 max-w-[84rem] items-center justify-between px-5 sm:px-8 lg:px-12">
         <a href="#top" className="group flex items-baseline gap-2.5">
-          <span className="font-display text-sm font-semibold tracking-[0.18em] text-primary">MBK</span>
-          <span className="hidden text-[11px] text-muted-foreground sm:inline">{identity.title}</span>
+          <span className="font-display text-sm font-semibold tracking-[0.18em] text-primary">
+            {shortLabel}
+          </span>
+          <span className="hidden text-[11px] text-muted-foreground sm:inline">{title}</span>
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
@@ -102,7 +117,10 @@ export function SiteHeader() {
 
       {open && (
         <div id="mobile-nav" className="border-t border-hairline bg-background lg:hidden">
-          <nav aria-label="Mobile" className="mx-auto flex max-w-[84rem] flex-col px-5 py-2 sm:px-8">
+          <nav
+            aria-label="Mobile"
+            className="mx-auto flex max-w-[84rem] flex-col px-5 py-2 sm:px-8"
+          >
             {nav.map((item) => (
               <a
                 key={item.href}
